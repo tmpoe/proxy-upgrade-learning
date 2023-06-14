@@ -4,31 +4,22 @@ pragma solidity ^0.8.9;
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
 
-contract Lock {
-    uint public unlockTime;
-    address payable public owner;
+contract Box {
+    uint256 private _value;
 
-    event Withdrawal(uint amount, uint when);
+    // Emitted when the stored value changes
+    event ValueChanged(uint256 value);
 
-    constructor(uint _unlockTime) payable {
-        require(
-            block.timestamp < _unlockTime,
-            "Unlock time should be in the future"
-        );
-
-        unlockTime = _unlockTime;
-        owner = payable(msg.sender);
+    // Stores a new value in the contract
+    function store(uint256 value) public {
+        // console.log("Storing value", value);
+        _value = value;
+        emit ValueChanged(value);
     }
 
-    function withdraw() public {
-        // Uncomment this line, and the import of "hardhat/console.sol", to print a log in your terminal
-        // console.log("Unlock time is %o and block timestamp is %o", unlockTime, block.timestamp);
-
-        require(block.timestamp >= unlockTime, "You can't withdraw yet");
-        require(msg.sender == owner, "You aren't the owner");
-
-        emit Withdrawal(address(this).balance, block.timestamp);
-
-        owner.transfer(address(this).balance);
+    // Reads the last stored value
+    function retrieve() public view returns (uint256) {
+        // console.log("Retrieving value", _value);
+        return _value;
     }
 }
