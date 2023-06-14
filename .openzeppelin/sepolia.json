@@ -28,8 +28,31 @@
             "offset": 0,
             "slot": "0",
             "type": "t_uint256",
-            "contract": "Box",
-            "src": "contracts/Box.sol:8"
+            "contract": "NewBox",
+            "src": "contracts/NewBox.sol:8"
+          }
+        ],
+        "types": {
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        }
+      }
+    },
+    "c7e8a23064d1bef43162090cc1af8468c94307ac785f86c85f9204580b223ed2": {
+      "address": "0x03DC0f936D02e158527488e66678e66c148A9E0a",
+      "txHash": "0x85db6e238dce1f462a65d639d539691b50d6d4183d5c60a9b6cb210f90fa224a",
+      "layout": {
+        "solcVersion": "0.8.18",
+        "storage": [
+          {
+            "label": "_value",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256",
+            "contract": "NewBox",
+            "src": "contracts/NewBox.sol:8"
           }
         ],
         "types": {
